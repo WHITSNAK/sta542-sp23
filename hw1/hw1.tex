@@ -84,12 +84,34 @@ To derive the PACF function, it is more involved. The definition of PACF is equa
     corr(x_{t+h}, x_t|x_{n/\{t+h, t\}}) &= \phi_{hh} = - \frac{(-\theta)^h}{\sum_{i=0}^h \theta^{2i}}
 \end{align*}
 
+\newpage
 \section{Ex 2}
+\paragraph{(a)} Here we plotted the ACF and PACF plots in the hope that we could fit an ARMA model on the series. The PACF indicates a 2-order model $AR(2)$ because most of the terms after lag 2 level off or are insignificant. Of course, it is not entirely correct based on the plot.
+
 \begin{figure*}[!h]
   \centering
-  \includegraphics[width=0.5\textwidth]{1.b.png}
+  \includegraphics[width=0.9\textwidth]{plot1.png}
   \captionsetup{justification=centering}
-  \caption{$\theta$ Posterior Joint}
+  \caption{ACF & PACF plots}
+\end{figure*}
+
+\paragraph{(b)} The fitted model provides the following estimated parameters. $\mu=2.8210$, $\phi_1 = 1.5023$, $\phi_2 = -0.7493$, $\sigma^2 = 212.5603$.
+
+\paragraph{(c)} After fitting the $AR(2)$ model using the first 100 data points, we plot the actual series against the simulated one from the fitted model and their corresponding residual plot. We see the simulated trace does poorly, capturing the inherent structure. And the residual certainly doesn't follow the Gaussian white noise assumption.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{plot2.png}
+  \captionsetup{justification=centering}
+  \caption{Simulated vs the truth signal & residual plots}
+\end{figure*}
+
+\paragraph{(d - e)} To investigate further, we conducted a forecast for the rest of the remaining 20 unseen data points and plotted them against each other. The 95\% forecast confidence interval is also provided under the shaded grey area. Unfortunately, the forecast is too bad to comment on. It literally just made the $sigma^2$ so large that it covers the entire historical range and the mean estimate as close as 0. I don't believe AR is an ideal model for this dataset. The trace has more structure than noise, to be honest. And $AR(.)$ is not good at such task solely based on the observation.
+
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{plot3.png}
+  \captionsetup{justification=centering}
+  \caption{20 Step ahead forecast with 95\% CI}
 \end{figure*}
 
 \end{document}
