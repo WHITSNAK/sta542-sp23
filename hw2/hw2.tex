@@ -63,13 +63,38 @@ Suppose we know the underlying truth $Y = X^2 + Z$. Both $X$ and $Z$ are standar
 \section{Ex 2}
 \paragraph{(a)}
 Here we plot $f(t) = A \cos(2\pi \times 5t + \alpha)$, where $A = \pi, \aplha = 1$ and between $0 < t \leq 5$ at 120Hz. The resulting $f_{478} = 2.324$.
+\begin{align*}
+    f_t = \pi \cos(2\pi \times 5t + 1)
+\end{align*}
 
 \begin{figure*}[!h]
   \centering
-  \includegraphics[width=0.9\textwidth]{plot1.png}
+  \includegraphics[width=1.0\textwidth]{plot1.png}
   \captionsetup{justification=centering}
-  \caption{ACF & PACF plots}
+  \caption{The ground truth cosine wave}
 \end{figure*}
+
+\paragraph{(b)}
+Now, we adds a $MA(2|\theta=(0.4, 1.6))$ noise to the ground truth with each individual $w_t \thicksim_{iid} N(0,v=1)$. Hence, we have $Y_t = f_t + X_t$. See Figure \ref{fig:truth_plus_noise}.
+
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{plot2.png}
+  \captionsetup{justification=centering}
+  \caption{The ground truth cosine wave plus MA(2) noises, $Y_t = f_t + X_t$}
+  \label{fig:truth_plus_noise}
+\end{figure*}
+
+\paragraph{(c)}
+Suppose we know $X_t$ follows MA(2) process and would like to estimate the coefficients directly from the observations $Y_t$. We get the following coefficients $\hat{\theta}=(0.76, 0.2523), \hat{v}=5.6$. Obviously, it is way off from the ground truth $\theta = (0.4 1.6), v=1$.
+
+\paragraph{(d)}
+We can also consider the ARIMA model, using the finite differences to remove and trend, $Z_t = (1-B)^d Y_t$. It is under the assumption that we can recover the stationary series after the finite differences. However, we know the underlying series; we can't arrive at anything stationary. For example, the first-order difference of $f_t$ gives us a mixture of two cosine waves at a different phase.
+\begin{align*}
+    (1-B)f_t &= f_t - f_{t-1} \\
+        &= \pi [cos(2\pi \times 5t + 1) - cos(2\pi \times 5t - 4)]
+\end{align*}
+
 
 
 \end{document}
