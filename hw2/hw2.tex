@@ -105,6 +105,40 @@ Furthermore, we can see taking the finite differences creates an artificially hi
 \end{figure*}
 
 \paragraph{(e)}
-One reasonable approach is to use SARIMA to model the data because we can use Periodogram to investigate the amplitude on different frequencies.
+One reasonable approach is to use SARIMA to model the data because we can use Periodogram to investigate the amplitude on different frequencies. We see a spike at 5Hz in Figure \ref{fig:periodogram} which signals the periodicity at every 24th sample at the 120Hz sampling rate or every $0.2t$. Hence, we can assume the following model.
+\begin{align*}
+    (1 - B^{0.2})Y_t &= X_t - X_{t-0.2} \\
+        &\thicksim ARIMA(0,0,2) \times (0,1,1)_{0.2}
+\end{align*}
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{plot4.png}
+  \captionsetup{justification=centering}
+  \caption{Periodogram of $Y_t$}
+  \label{fig:periodogram}
+\end{figure*}
+
+With the model defined, I have plotted the prediction results and 200 forward forecasts against the observation in Figure \ref{fig:sarima_forecast}.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{plot5.png}
+  \captionsetup{justification=centering}
+  \caption{$ARIMA(0,0,2) \times (0,1,1)_{0.2}$ in-sample and out-sample forecasts.}
+  \label{fig:sarima_forecast}
+\end{figure*}
+
+Lastly, I check the residual against with Gaussian assumption. It looks fine.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plot6.png}
+  \captionsetup{justification=centering}
+  \caption{SARIMA residual diagnostic under normality assumption.}
+  \label{fig:sarima_diagnostic}
+\end{figure*}
+
+\paragraph{(f)}
+
+\paragraph{(g)}
+\paragraph{(h)}
 
 \end{document}
