@@ -81,7 +81,7 @@ Now, we adds a $MA(2|\theta=(0.4, 1.6))$ noise to the ground truth with each ind
   \centering
   \includegraphics[width=1.0\textwidth]{plot2.png}
   \captionsetup{justification=centering}
-  \caption{The ground truth cosine wave plus MA(2) noises, $Y_t = f_t + X_t$}
+  \caption{The ground truth cosine wave plus MA(2) noises, $Y_t = f_t + X_t$.}
   \label{fig:truth_plus_noise}
 \end{figure*}
 
@@ -95,6 +95,16 @@ We can also consider the ARIMA model, using the finite differences to remove and
         &= \pi [cos(2\pi \times 5t + 1) - cos(2\pi \times 5t - 4)]
 \end{align*}
 
+Furthermore, we can see taking the finite differences creates an artificially high amplitude which certainly doesn't resemble the $MA(2|\theta=(0.4, 1.6))$ model for $X_t$.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{plot3.png}
+  \captionsetup{justification=centering}
+  \caption{Finite differences of $Y_t$ up to the 3rd order.}
+  \label{fig:truth_plus_noise}
+\end{figure*}
 
+\paragraph{(e)}
+One reasonable approach is to use SARIMA to model the data because we can use Periodogram to investigate the amplitude on different frequencies.
 
 \end{document}
