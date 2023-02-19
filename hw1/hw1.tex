@@ -86,7 +86,7 @@ To derive the PACF function, it is more involved. The definition of PACF is equa
 
 \newpage
 \section{Ex 2}
-\paragraph{(a)} Here we plotted the ACF and PACF plots in the hope that we could fit an ARMA model on the series. The PACF indicates a 2-order model $AR(2)$ because most of the terms after lag 2 level off or are insignificant. Of course, it is not entirely correct based on the plot.
+\paragraph{(a)} Here we plotted the ACF and PACF plots in the hope that we could fit an ARMA model on the series. The PACF indicates a 2nd-order model $AR(2)$ because most of the terms after lag 2 level off or are insignificant. Of course, it is not entirely correct based on the plot.
 
 \begin{figure*}[!h]
   \centering
@@ -110,6 +110,36 @@ To derive the PACF function, it is more involved. The definition of PACF is equa
 \begin{figure*}[!h]
   \centering
   \includegraphics[width=0.8\textwidth]{plot3.png}
+  \captionsetup{justification=centering}
+  \caption{20 Step ahead forecast with 95\% CI}
+\end{figure*}
+
+\newpage
+\section{Ex 2}
+\paragraph{(a)} Now, the same drill, but a different dataset. Here we plotted the ACF and PACF plots in the hope that we could fit an ARMA model on the series. The PACF indicates a 3rd-order model $AR(3)$ because most of the terms after lag 3 level off or are insignificant.
+
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{plot4.png}
+  \captionsetup{justification=centering}
+  \caption{ACF & PACF plots}
+\end{figure*}
+
+\paragraph{(b)} The fitted model provides the following estimated parameters. $\mu=-0.0458$, $\phi_1 = 0.5936$, $\phi_2 = 0.0350$, $\phi_3=0.2305$, $\sigma^2 = 5.3295$.
+
+\paragraph{(c)} After fitting the $AR(3)$ model using the first 800 data points, we plot the actual series against the simulated one from the fitted model and their corresponding residual plot. We see the simulated trace sort of resemble the actual trace. If we do a few more time of simulations, sometimes, we can't even distinguish the two. And the residual certainly looks very Gaussian.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{plot5.png}
+  \captionsetup{justification=centering}
+  \caption{Simulated vs the truth signal & residual plots}
+\end{figure*}
+
+\paragraph{(d - e)} Lastly, we conducted a forecast for the rest of the remaining 200 unseen data points and plotted them against each other. The 95\% forecast confidence interval is also provided under the shaded grey area. The forecast correctly identifies the mean-reverting behavior. Although the 95\% CI band is still quite large, its performance is certainly better than in Exercise 2. At least, we can see that ARMA(.) model is good at modeling correlated noises but not good at capturing structure. And, its Gaussian assumption definitely seems too strong.
+
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{plot6.png}
   \captionsetup{justification=centering}
   \caption{20 Step ahead forecast with 95\% CI}
 \end{figure*}
