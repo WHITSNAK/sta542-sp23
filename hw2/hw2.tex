@@ -136,9 +136,20 @@ Lastly, I check the residual against with Gaussian assumption. It looks fine.
   \label{fig:sarima_diagnostic}
 \end{figure*}
 
+\newpage
 \paragraph{(f)}
+We can see the following pattern. The larger the $k$, the higher the intermediate spike between each period. When $l < 3$, the intermediate spike happens after each period peak. When $l > 3$, the intermediate spike occurs before each period peak. With $l = {3, 6}$ more special. The former imposes two-period peaks, and the latter creates two-period valleys. Both the $(k=1, l=1)$ and $(k=2, l=2)$ are similar to the PPG signal.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{plot7.png}
+  \captionsetup{justification=centering}
+  \caption{$f_1(t)$ under different parametrizations.}
+  \label{fig:f1t_kl_parametrization}
+\end{figure*}
 
 \paragraph{(g)}
+
+
 \paragraph{(h)}
 
 \end{document}
