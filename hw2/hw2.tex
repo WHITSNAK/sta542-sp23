@@ -139,6 +139,9 @@ Lastly, I check the residual against with Gaussian assumption. It looks fine.
 \newpage
 \paragraph{(f)}
 We can see the following pattern. The larger the $k$, the higher the intermediate spike between each period. When $l < 3$, the intermediate spike happens after each period peak. When $l > 3$, the intermediate spike occurs before each period peak. With $l = {3, 6}$ more special. The former imposes two-period peaks, and the latter creates two-period valleys. Both the $(k=1, l=1)$ and $(k=2, l=2)$ are similar to the PPG signal.
+\begin{align*}
+    f_1(t) &= \cos(2\pi \times 5t) + A\cos(2\pi \times 10t + \alpha)
+\end{align*}
 \begin{figure*}[!h]
   \centering
   \includegraphics[width=1.0\textwidth]{plot7.png}
@@ -147,9 +150,21 @@ We can see the following pattern. The larger the $k$, the higher the intermediat
   \label{fig:f1t_kl_parametrization}
 \end{figure*}
 
+\newpage
 \paragraph{(g)}
-
+Now, we compare $f_2(t)$ to the $f_1(t)$ above. It has a slightly out-of-phase process than $f_1(t)$ due to the $3\pi t$ term. It grows slightly slower at every period. But it is still periodic.
+\begin{align*}
+    f_2(t) &= \cos(2\pi \times 5t) + A\cos(2\pi \times 3\pi t + \alpha)
+\end{align*}
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{plot8.png}
+  \captionsetup{justification=centering}
+  \caption{$f_1(t)$ vs. $f_2(t)$ comparison.}
+  \label{fig:f1_vs_f2}
+\end{figure*}
 
 \paragraph{(h)}
+Under the assumption that we can decompose $Y_t = f_t + X_t$ down to two separate components $f_t \thicksim f_1(t)$ and $X_t \thicksim MA(2)$, we should model the two components independently then sum them up to do the forecast. Each would have its own estimation error, and the predicted $\hat{Y_{t+m}}|Y_{1:t}$ is then a linear combination of the two time series.
 
 \end{document}
