@@ -100,8 +100,24 @@ Using the provided sample covariances, we apply the Durbin-Levison Recursion to 
 \end{align*}
 Then, the corresponding PACF coefficients asymptotically converge in distribution to Gaussian under the casual AR(p) assumption, $\sqrt{n}\hat{\phi}_{hh} \xrightarrow{d} N(0,1)$. Hence, the 3-rd order coefficient has the 95-the confidence interval $0.081 \pm 1.96/\sqrt{n}$. In other words, we need at least a 585 sample size to claim the statistical significance for the 3-rd order coefficient.
 
+\newpage
 \section{Ex 4}
+\paragraph{(a)}
+Here we plot the FFT's power spectrum using two different sampling rates, 200Hz, and 100Hz. Most of the variances are centered around the low-frequency components. Although there are no obvious differences in the power spectrum, the associated frequency is halved at the 100Hz sampling rate plot.
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{4-1.png}
+  \captionsetup{justification=centering}
+  \caption{PSD comparison between two sampling rates}
+\end{figure*}
 
+\paragraph{(b)}
 
+\begin{figure*}[!h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{4-2.png}
+  \captionsetup{justification=centering}
+  \caption{PSD comparison for high frequency series}
+\end{figure*}
 
 \end{document}
